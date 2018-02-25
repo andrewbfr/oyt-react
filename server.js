@@ -17,10 +17,7 @@ app.use(routes);
 mongoose.Promise = global.Promise;
 // Connect to the Mongo DB
 mongoose.connect(
-  process.env.MONGODB_URI || "mongodb://localhost/reactreadinglist",
-  {
-    useMongoClient: true
-  }
+  process.env.MONGODB_URI || "mongodb://localhost/pytreactdb"
 );
 
 // Start the API server
