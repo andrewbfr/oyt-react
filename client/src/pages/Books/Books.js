@@ -58,7 +58,7 @@ class Books extends Component {
     return (
       <Container fluid>
         <Row>
-          <Col size="md-6">
+          <Col size="md-12 sm-12">
             <Jumbotron>
               <h4>What do you want to search for in the New York Times?</h4>
             </Jumbotron>
@@ -89,7 +89,7 @@ class Books extends Component {
               </FormBtn>
             </form>
           </Col>
-          <Col size="md-6 sm-12">
+          <Col size="md-12 sm-12">
             <Jumbotron>
               <h4>Articles Returned</h4>
             </Jumbotron>
