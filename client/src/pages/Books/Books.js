@@ -13,7 +13,8 @@ class Books extends Component {
     headline: "",
     author: "",
     synopsis: "",
-    url: ""
+    url: "",
+    topic: ""
   };
 
   componentDidMount() {
@@ -42,16 +43,13 @@ class Books extends Component {
   };
 
   handleFormSubmit = event => {
+    // When the form is submitted, prevent its default behavior, get recipes update the recipes state
     event.preventDefault();
-    if (this.state.title && this.state.author) {
-      API.saveBook({
-        title: this.state.title,
-        author: this.state.author,
-        synopsis: this.state.synopsis
-      })
-        .then(res => this.loadBooks())
-        .catch(err => console.log(err));
-    }
+    API.search(this.state.topic)
+      .then(res => this.setState({ articles: res.data }))
+      .then(res => console.log(res))
+      .then(res => console.log(this.state))
+      .catch(err => console.log(err));
   };
 
   render() {
@@ -76,13 +74,13 @@ class Books extends Component {
                 placeholder="End Date (required)"
               />
                <Input
-                value={this.state.author}
+                value={this.state.topic}
                 onChange={this.handleInputChange}
                 name="topic"
                 placeholder="Topic (required)"
               />
               <FormBtn
-                disabled={!(this.state.author && this.state.title)}
+                disabled={!(this.state.topic)}
                 onClick={this.handleFormSubmit}
               >
                 Submit Request
